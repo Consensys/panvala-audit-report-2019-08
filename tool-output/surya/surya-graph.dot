@@ -1,0 +1,474 @@
+digraph G {
+  graph [ ratio = "auto", page = "100", compound =true ];
+subgraph "clusterBasicToken" {
+  graph [ label = "BasicToken", color = "lightgray", style = "filled" ];
+  "BasicToken.<Constructor>" [ label = "<Constructor>", color = "green" ];
+  "BasicToken._mint" [ label = "_mint" ];
+}
+
+subgraph "clusterGatekeeper" {
+  graph [ label = "Gatekeeper", color = "lightgray", style = "filled" ];
+  "Gatekeeper.<Constructor>" [ label = "<Constructor>", color = "green" ];
+  "Gatekeeper.currentEpochNumber" [ label = "currentEpochNumber", color = "green" ];
+  "Gatekeeper.epochStart" [ label = "epochStart", color = "green" ];
+  "Gatekeeper.recommendSlate" [ label = "recommendSlate", color = "green" ];
+  "Gatekeeper.slateRequests" [ label = "slateRequests" ];
+  "Gatekeeper.stakeTokens" [ label = "stakeTokens", color = "green" ];
+  "Gatekeeper.withdrawStake" [ label = "withdrawStake", color = "green" ];
+  "Gatekeeper.depositVoteTokens" [ label = "depositVoteTokens", color = "green" ];
+  "Gatekeeper.withdrawVoteTokens" [ label = "withdrawVoteTokens", color = "green" ];
+  "Gatekeeper.delegateVotingRights" [ label = "delegateVotingRights", color = "green" ];
+  "Gatekeeper.commitBallot" [ label = "commitBallot", color = "green" ];
+  "Gatekeeper.didCommit" [ label = "didCommit" ];
+  "Gatekeeper.getCommitHash" [ label = "getCommitHash", color = "green" ];
+  "Gatekeeper.revealBallot" [ label = "revealBallot", color = "green" ];
+  "Gatekeeper.revealManyBallots" [ label = "revealManyBallots", color = "green" ];
+  "Gatekeeper.getFirstChoiceVotes" [ label = "getFirstChoiceVotes" ];
+  "Gatekeeper.getSecondChoiceVotes" [ label = "getSecondChoiceVotes", color = "green" ];
+  "Gatekeeper.didReveal" [ label = "didReveal" ];
+  "Gatekeeper.finalizeContest" [ label = "finalizeContest", color = "green" ];
+  "Gatekeeper.contestStatus" [ label = "contestStatus", color = "green" ];
+  "Gatekeeper.contestSlates" [ label = "contestSlates", color = "green" ];
+  "Gatekeeper.contestDetails" [ label = "contestDetails" ];
+  "Gatekeeper.finalizeRunoff" [ label = "finalizeRunoff", color = "green" ];
+  "Gatekeeper.donateChallengerStakes" [ label = "donateChallengerStakes", color = "green" ];
+  "Gatekeeper.rejectSlates" [ label = "rejectSlates" ];
+  "Gatekeeper.getWinningSlate" [ label = "getWinningSlate", color = "green" ];
+  "Gatekeeper.requestPermission" [ label = "requestPermission", color = "green" ];
+  "Gatekeeper.acceptSlate" [ label = "acceptSlate" ];
+  "Gatekeeper.hasPermission" [ label = "hasPermission" ];
+  "Gatekeeper.slateSubmissionDeadline" [ label = "slateSubmissionDeadline" ];
+  "Gatekeeper.commitPeriodActive" [ label = "commitPeriodActive" ];
+  "Gatekeeper.startTime" [ label = "startTime" ];
+  "Gatekeeper.slateCount" [ label = "slateCount" ];
+  "Gatekeeper.requestCount" [ label = "requestCount" ];
+  "Gatekeeper.requests" [ label = "requests" ];
+  "Gatekeeper.incumbent" [ label = "incumbent" ];
+  "Gatekeeper.slates" [ label = "slates" ];
+}
+
+subgraph "clusterMigrations" {
+  graph [ label = "Migrations", color = "lightgray", style = "filled" ];
+  "Migrations.<Constructor>" [ label = "<Constructor>", color = "green" ];
+  "Migrations.restricted" [ label = "restricted", color = "yellow" ];
+  "Migrations.setCompleted" [ label = "setCompleted" ];
+  "Migrations.upgrade" [ label = "upgrade", color = "green" ];
+}
+
+subgraph "clusterParameterStore" {
+  graph [ label = "ParameterStore", color = "lightgray", style = "filled" ];
+  "ParameterStore.getAsUint" [ label = "getAsUint", color = "green" ];
+  "ParameterStore.getAsAddress" [ label = "getAsAddress", color = "green" ];
+  "ParameterStore.<Constructor>" [ label = "<Constructor>", color = "green" ];
+  "ParameterStore.init" [ label = "init", color = "green" ];
+  "ParameterStore.get" [ label = "get" ];
+  "ParameterStore.set" [ label = "set" ];
+  "ParameterStore.setInitialValue" [ label = "setInitialValue", color = "green" ];
+  "ParameterStore.createProposal" [ label = "createProposal", color = "green" ];
+  "ParameterStore.createManyProposals" [ label = "createManyProposals", color = "green" ];
+  "ParameterStore.setValue" [ label = "setValue", color = "green" ];
+  "ParameterStore._gatekeeper" [ label = "_gatekeeper" ];
+}
+
+subgraph "clusterTokenCapacitor" {
+  graph [ label = "TokenCapacitor", color = "lightgray", style = "filled" ];
+  "TokenCapacitor.donate" [ label = "donate", color = "green" ];
+  "TokenCapacitor.<Constructor>" [ label = "<Constructor>", color = "green" ];
+  "TokenCapacitor._gatekeeper" [ label = "_gatekeeper" ];
+  "TokenCapacitor.createProposal" [ label = "createProposal", color = "green" ];
+  "TokenCapacitor.createManyProposals" [ label = "createManyProposals", color = "green" ];
+  "TokenCapacitor.withdrawTokens" [ label = "withdrawTokens", color = "green" ];
+  "TokenCapacitor.projectedUnlockedBalance" [ label = "projectedUnlockedBalance", color = "green" ];
+  "TokenCapacitor.projectedLockedBalance" [ label = "projectedLockedBalance" ];
+  "TokenCapacitor.calculateDecay" [ label = "calculateDecay" ];
+  "TokenCapacitor.updateBalancesUntil" [ label = "updateBalancesUntil", color = "green" ];
+  "TokenCapacitor.updateBalances" [ label = "updateBalances" ];
+}
+
+subgraph "clusterTimeTravelingGatekeeper" {
+  graph [ label = "TimeTravelingGatekeeper", color = "lightgray", style = "filled" ];
+  "TimeTravelingGatekeeper.<Constructor>" [ label = "<Constructor>", color = "green" ];
+  "TimeTravelingGatekeeper.timeTravel" [ label = "timeTravel", color = "green" ];
+}
+
+subgraph "clusterUpgradedGatekeeper" {
+  graph [ label = "UpgradedGatekeeper", color = "lightgray", style = "filled" ];
+  "UpgradedGatekeeper.<Constructor>" [ label = "<Constructor>", color = "green" ];
+  "UpgradedGatekeeper.init" [ label = "init", color = "green" ];
+  "Gatekeeper.depositVoteTokens" [ label = "depositVoteTokens", color = "green" ];
+  "Gatekeeper.stakeTokens" [ label = "stakeTokens", color = "green" ];
+  "UpgradedGatekeeper.migrateState" [ label = "migrateState" ];
+  "UpgradedGatekeeper.migrateContest" [ label = "migrateContest" ];
+  "UpgradedGatekeeper.fetchContest" [ label = "fetchContest" ];
+  "UpgradedGatekeeper.fetchSlate" [ label = "fetchSlate" ];
+}
+
+subgraph "clusternow" {
+  graph [ label = "now", color = "lightgray" ];
+  "now.sub" [ label = "sub" ];
+}
+
+subgraph "clusterelapsed" {
+  graph [ label = "elapsed", color = "lightgray" ];
+  "elapsed.div" [ label = "div" ];
+}
+
+subgraph "clusterstartTime" {
+  graph [ label = "startTime", color = "lightgray" ];
+  "startTime.add" [ label = "add" ];
+  "startTime.sub" [ label = "sub" ];
+}
+
+subgraph "clusterEPOCH_LENGTH" {
+  graph [ label = "EPOCH_LENGTH", color = "lightgray" ];
+  "EPOCH_LENGTH.mul" [ label = "mul" ];
+}
+
+subgraph "clusterslateCount" {
+  graph [ label = "slateCount", color = "lightgray" ];
+  "slateCount.add" [ label = "add" ];
+}
+
+subgraph "clusterIERC20" {
+  graph [ label = "IERC20", color = "lightgray" ];
+  "IERC20.balanceOf" [ label = "balanceOf" ];
+  "IERC20.transferFrom" [ label = "transferFrom" ];
+  "IERC20.transfer" [ label = "transfer" ];
+  "IERC20.approve" [ label = "approve" ];
+}
+
+subgraph "clusteroriginalBalance" {
+  graph [ label = "originalBalance", color = "lightgray" ];
+  "originalBalance.add" [ label = "add" ];
+}
+
+subgraph "clustervotingRights" {
+  graph [ label = "votingRights", color = "lightgray" ];
+  "votingRights.sub" [ label = "sub" ];
+}
+
+subgraph "clusternumTokens" {
+  graph [ label = "numTokens", color = "lightgray" ];
+  "numTokens.sub" [ label = "sub" ];
+}
+
+subgraph "clusterabi" {
+  graph [ label = "abi", color = "lightgray" ];
+  "abi.decode" [ label = "decode" ];
+}
+
+subgraph "clustervotes" {
+  graph [ label = "votes", color = "lightgray" ];
+  "votes.add" [ label = "add" ];
+}
+
+subgraph "clustertotal" {
+  graph [ label = "total", color = "lightgray" ];
+  "total.add" [ label = "add" ];
+}
+
+subgraph "clusterwinnerVotes" {
+  graph [ label = "winnerVotes", color = "lightgray" ];
+  "winnerVotes.mul" [ label = "mul" ];
+}
+
+subgraph "clusterleaderTotal" {
+  graph [ label = "leaderTotal", color = "lightgray" ];
+  "leaderTotal.add" [ label = "add" ];
+}
+
+subgraph "clusterrunnerUpTotal" {
+  graph [ label = "runnerUpTotal", color = "lightgray" ];
+  "runnerUpTotal.add" [ label = "add" ];
+}
+
+subgraph "clusterrequestCount" {
+  graph [ label = "requestCount", color = "lightgray" ];
+  "requestCount.add" [ label = "add" ];
+}
+
+subgraph "clusterproposalCount" {
+  graph [ label = "proposalCount", color = "lightgray" ];
+  "proposalCount.add" [ label = "add" ];
+}
+
+subgraph "clusterunlockedBalance" {
+  graph [ label = "unlockedBalance", color = "lightgray" ];
+  "unlockedBalance.sub" [ label = "sub" ];
+  "unlockedBalance.add" [ label = "add" ];
+}
+
+subgraph "clusterlifetimeReleasedTokens" {
+  graph [ label = "lifetimeReleasedTokens", color = "lightgray" ];
+  "lifetimeReleasedTokens.add" [ label = "add" ];
+}
+
+subgraph "clusterlastLockedBalance" {
+  graph [ label = "lastLockedBalance", color = "lightgray" ];
+  "lastLockedBalance.add" [ label = "add" ];
+  "lastLockedBalance.sub" [ label = "sub" ];
+  "lastLockedBalance.mul" [ label = "mul" ];
+}
+
+subgraph "clustertime" {
+  graph [ label = "time", color = "lightgray" ];
+  "time.sub" [ label = "sub" ];
+}
+
+subgraph "clusterelapsedTime" {
+  graph [ label = "elapsedTime", color = "lightgray" ];
+  "elapsedTime.div" [ label = "div" ];
+}
+
+subgraph "clusterdecay" {
+  graph [ label = "decay", color = "lightgray" ];
+  "decay.mul" [ label = "mul" ];
+}
+
+subgraph "clustertotalBalance" {
+  graph [ label = "totalBalance", color = "lightgray" ];
+  "totalBalance.sub" [ label = "sub" ];
+}
+
+  "BasicToken.null";
+  "BasicToken._mint";
+  "Gatekeeper.currentEpochNumber";
+  "now.sub";
+  "elapsed.div";
+  "Gatekeeper.epochStart";
+  "startTime.add";
+  "EPOCH_LENGTH.mul";
+  "Gatekeeper.recommendSlate";
+  "Gatekeeper.slateSubmissionDeadline";
+  "slateCount.add";
+  "Gatekeeper.stakeTokens";
+  "ParameterStore.getAsUint";
+  "IERC20.balanceOf";
+  "IERC20.transferFrom";
+  "Gatekeeper.withdrawStake";
+  "IERC20.transfer";
+  "Gatekeeper.depositVoteTokens";
+  "originalBalance.add";
+  "Gatekeeper.withdrawVoteTokens";
+  "Gatekeeper.commitPeriodActive";
+  "votingRights.sub";
+  "Gatekeeper.commitBallot";
+  "Gatekeeper.didCommit";
+  "numTokens.sub";
+  "Gatekeeper.revealBallot";
+  "Gatekeeper.didReveal";
+  "Gatekeeper.revealManyBallots";
+  "abi.decode";
+  "Gatekeeper.getSecondChoiceVotes";
+  "votes.add";
+  "Gatekeeper.finalizeContest";
+  "Gatekeeper.acceptSlate";
+  "total.add";
+  "Gatekeeper.rejectSlates";
+  "winnerVotes.mul";
+  "Gatekeeper.finalizeRunoff";
+  "Gatekeeper.getFirstChoiceVotes";
+  "leaderTotal.add";
+  "runnerUpTotal.add";
+  "Gatekeeper.donateChallengerStakes";
+  "ParameterStore.getAsAddress";
+  "IERC20.approve";
+  "TokenCapacitor.donate";
+  "Gatekeeper.requestPermission";
+  "requestCount.add";
+  "Migrations.upgrade";
+  "Migrations.setCompleted";
+  "ParameterStore.null";
+  "ParameterStore.set";
+  "ParameterStore.get";
+  "ParameterStore.setInitialValue";
+  "ParameterStore.createProposal";
+  "ParameterStore._gatekeeper";
+  "proposalCount.add";
+  "ParameterStore.createManyProposals";
+  "ParameterStore.setValue";
+  "Gatekeeper.hasPermission";
+  "TokenCapacitor.null";
+  "TokenCapacitor._gatekeeper";
+  "TokenCapacitor.createProposal";
+  "TokenCapacitor.createManyProposals";
+  "TokenCapacitor.withdrawTokens";
+  "TokenCapacitor.updateBalances";
+  "unlockedBalance.sub";
+  "lifetimeReleasedTokens.add";
+  "lastLockedBalance.add";
+  "TokenCapacitor.projectedUnlockedBalance";
+  "lastLockedBalance.sub";
+  "TokenCapacitor.projectedLockedBalance";
+  "unlockedBalance.add";
+  "time.sub";
+  "TokenCapacitor.calculateDecay";
+  "elapsedTime.div";
+  "lastLockedBalance.mul";
+  "decay.mul";
+  "TokenCapacitor.updateBalancesUntil";
+  "totalBalance.sub";
+  "TimeTravelingGatekeeper.timeTravel";
+  "startTime.sub";
+  "UpgradedGatekeeper.null";
+  "Gatekeeper.startTime";
+  "UpgradedGatekeeper.init";
+  "UpgradedGatekeeper.migrateState";
+  "Gatekeeper.slateCount";
+  "Gatekeeper.requestCount";
+  "UpgradedGatekeeper.migrateContest";
+  "UpgradedGatekeeper.fetchContest";
+  "UpgradedGatekeeper.fetchSlate";
+  "Gatekeeper.requests";
+  "Gatekeeper.incumbent";
+  "Gatekeeper.contestDetails";
+  "Gatekeeper.slates";
+  "Gatekeeper.slateRequests";
+  "BasicToken.null" -> "BasicToken._mint" [ color = "green" ];
+  "Gatekeeper.currentEpochNumber" -> "now.sub" [ color = "orange" ];
+  "Gatekeeper.currentEpochNumber" -> "elapsed.div" [ color = "orange" ];
+  "Gatekeeper.epochStart" -> "startTime.add" [ color = "orange" ];
+  "Gatekeeper.epochStart" -> "EPOCH_LENGTH.mul" [ color = "orange" ];
+  "Gatekeeper.recommendSlate" -> "Gatekeeper.currentEpochNumber" [ color = "green" ];
+  "Gatekeeper.recommendSlate" -> "Gatekeeper.slateSubmissionDeadline" [ color = "green" ];
+  "Gatekeeper.recommendSlate" -> "slateCount.add" [ color = "orange" ];
+  "Gatekeeper.stakeTokens" -> "ParameterStore.getAsUint" [ color = "orange" ];
+  "Gatekeeper.stakeTokens" -> "IERC20.balanceOf" [ color = "orange" ];
+  "Gatekeeper.stakeTokens" -> "Gatekeeper.slateSubmissionDeadline" [ color = "green" ];
+  "Gatekeeper.stakeTokens" -> "Gatekeeper.currentEpochNumber" [ color = "green" ];
+  "Gatekeeper.stakeTokens" -> "IERC20.transferFrom" [ color = "orange" ];
+  "Gatekeeper.stakeTokens" -> "now.sub" [ color = "orange" ];
+  "Gatekeeper.stakeTokens" -> "Gatekeeper.epochStart" [ color = "green" ];
+  "Gatekeeper.withdrawStake" -> "IERC20.transfer" [ color = "orange" ];
+  "Gatekeeper.depositVoteTokens" -> "IERC20.balanceOf" [ color = "orange" ];
+  "Gatekeeper.depositVoteTokens" -> "originalBalance.add" [ color = "orange" ];
+  "Gatekeeper.depositVoteTokens" -> "IERC20.transferFrom" [ color = "orange" ];
+  "Gatekeeper.withdrawVoteTokens" -> "Gatekeeper.commitPeriodActive" [ color = "green" ];
+  "Gatekeeper.withdrawVoteTokens" -> "votingRights.sub" [ color = "orange" ];
+  "Gatekeeper.withdrawVoteTokens" -> "IERC20.transfer" [ color = "orange" ];
+  "Gatekeeper.commitBallot" -> "Gatekeeper.currentEpochNumber" [ color = "green" ];
+  "Gatekeeper.commitBallot" -> "Gatekeeper.commitPeriodActive" [ color = "green" ];
+  "Gatekeeper.commitBallot" -> "Gatekeeper.didCommit" [ color = "green" ];
+  "Gatekeeper.commitBallot" -> "numTokens.sub" [ color = "orange" ];
+  "Gatekeeper.commitBallot" -> "Gatekeeper.depositVoteTokens" [ color = "green" ];
+  "Gatekeeper.revealBallot" -> "now.sub" [ color = "orange" ];
+  "Gatekeeper.revealBallot" -> "Gatekeeper.epochStart" [ color = "green" ];
+  "Gatekeeper.revealBallot" -> "Gatekeeper.didCommit" [ color = "green" ];
+  "Gatekeeper.revealBallot" -> "Gatekeeper.didReveal" [ color = "green" ];
+  "Gatekeeper.revealManyBallots" -> "abi.decode" [ color = "orange" ];
+  "Gatekeeper.revealManyBallots" -> "Gatekeeper.revealBallot" [ color = "green" ];
+  "Gatekeeper.getSecondChoiceVotes" -> "votes.add" [ color = "orange" ];
+  "Gatekeeper.finalizeContest" -> "Gatekeeper.slateSubmissionDeadline" [ color = "green" ];
+  "Gatekeeper.finalizeContest" -> "Gatekeeper.acceptSlate" [ color = "green" ];
+  "Gatekeeper.finalizeContest" -> "Gatekeeper.currentEpochNumber" [ color = "green" ];
+  "Gatekeeper.finalizeContest" -> "total.add" [ color = "orange" ];
+  "Gatekeeper.finalizeContest" -> "Gatekeeper.rejectSlates" [ color = "green" ];
+  "Gatekeeper.finalizeContest" -> "winnerVotes.mul" [ color = "orange" ];
+  "Gatekeeper.finalizeContest" -> "Gatekeeper.acceptSlate" [ color = "green" ];
+  "Gatekeeper.finalizeContest" -> "Gatekeeper.rejectSlates" [ color = "green" ];
+  "Gatekeeper.finalizeContest" -> "Gatekeeper.rejectSlates" [ color = "green" ];
+  "Gatekeeper.finalizeRunoff" -> "Gatekeeper.getFirstChoiceVotes" [ color = "green" ];
+  "Gatekeeper.finalizeRunoff" -> "Gatekeeper.getFirstChoiceVotes" [ color = "green" ];
+  "Gatekeeper.finalizeRunoff" -> "leaderTotal.add" [ color = "orange" ];
+  "Gatekeeper.finalizeRunoff" -> "runnerUpTotal.add" [ color = "orange" ];
+  "Gatekeeper.finalizeRunoff" -> "Gatekeeper.acceptSlate" [ color = "green" ];
+  "Gatekeeper.donateChallengerStakes" -> "ParameterStore.getAsAddress" [ color = "orange" ];
+  "Gatekeeper.donateChallengerStakes" -> "IERC20.approve" [ color = "orange" ];
+  "Gatekeeper.donateChallengerStakes" -> "TokenCapacitor.donate" [ color = "orange" ];
+  "Gatekeeper.requestPermission" -> "Gatekeeper.epochStart" [ color = "green" ];
+  "Gatekeeper.requestPermission" -> "Gatekeeper.currentEpochNumber" [ color = "green" ];
+  "Gatekeeper.requestPermission" -> "requestCount.add" [ color = "orange" ];
+  "Gatekeeper.slateSubmissionDeadline" -> "Gatekeeper.epochStart" [ color = "green" ];
+  "Gatekeeper.commitPeriodActive" -> "now.sub" [ color = "orange" ];
+  "Gatekeeper.commitPeriodActive" -> "Gatekeeper.epochStart" [ color = "green" ];
+  "Gatekeeper.commitPeriodActive" -> "Gatekeeper.currentEpochNumber" [ color = "green" ];
+  "Migrations.upgrade" -> "Migrations.setCompleted" [ color = "orange" ];
+  "ParameterStore.null" -> "ParameterStore.set" [ color = "green" ];
+  "ParameterStore.getAsUint" -> "ParameterStore.get" [ color = "green" ];
+  "ParameterStore.getAsAddress" -> "ParameterStore.get" [ color = "green" ];
+  "ParameterStore.setInitialValue" -> "ParameterStore.set" [ color = "green" ];
+  "ParameterStore.createProposal" -> "ParameterStore._gatekeeper" [ color = "green" ];
+  "ParameterStore.createProposal" -> "Gatekeeper.requestPermission" [ color = "orange" ];
+  "ParameterStore.createProposal" -> "proposalCount.add" [ color = "orange" ];
+  "ParameterStore.createManyProposals" -> "ParameterStore.createProposal" [ color = "green" ];
+  "ParameterStore.setValue" -> "Gatekeeper.hasPermission" [ color = "orange" ];
+  "ParameterStore.setValue" -> "ParameterStore.set" [ color = "green" ];
+  "ParameterStore._gatekeeper" -> "ParameterStore.getAsAddress" [ color = "green" ];
+  "TokenCapacitor.null" -> "TokenCapacitor._gatekeeper" [ color = "green" ];
+  "TokenCapacitor._gatekeeper" -> "ParameterStore.getAsAddress" [ color = "orange" ];
+  "TokenCapacitor.createProposal" -> "TokenCapacitor._gatekeeper" [ color = "green" ];
+  "TokenCapacitor.createProposal" -> "Gatekeeper.requestPermission" [ color = "orange" ];
+  "TokenCapacitor.createProposal" -> "proposalCount.add" [ color = "orange" ];
+  "TokenCapacitor.createManyProposals" -> "TokenCapacitor.createProposal" [ color = "green" ];
+  "TokenCapacitor.withdrawTokens" -> "Gatekeeper.hasPermission" [ color = "orange" ];
+  "TokenCapacitor.withdrawTokens" -> "TokenCapacitor.updateBalances" [ color = "green" ];
+  "TokenCapacitor.withdrawTokens" -> "unlockedBalance.sub" [ color = "orange" ];
+  "TokenCapacitor.withdrawTokens" -> "lifetimeReleasedTokens.add" [ color = "orange" ];
+  "TokenCapacitor.withdrawTokens" -> "IERC20.transfer" [ color = "orange" ];
+  "TokenCapacitor.donate" -> "TokenCapacitor.updateBalances" [ color = "green" ];
+  "TokenCapacitor.donate" -> "lastLockedBalance.add" [ color = "orange" ];
+  "TokenCapacitor.donate" -> "IERC20.transferFrom" [ color = "orange" ];
+  "TokenCapacitor.projectedUnlockedBalance" -> "lastLockedBalance.sub" [ color = "orange" ];
+  "TokenCapacitor.projectedUnlockedBalance" -> "TokenCapacitor.projectedLockedBalance" [ color = "green" ];
+  "TokenCapacitor.projectedUnlockedBalance" -> "unlockedBalance.add" [ color = "orange" ];
+  "TokenCapacitor.projectedLockedBalance" -> "time.sub" [ color = "orange" ];
+  "TokenCapacitor.projectedLockedBalance" -> "TokenCapacitor.calculateDecay" [ color = "green" ];
+  "TokenCapacitor.projectedLockedBalance" -> "elapsedTime.div" [ color = "orange" ];
+  "TokenCapacitor.projectedLockedBalance" -> "lastLockedBalance.mul" [ color = "orange" ];
+  "TokenCapacitor.calculateDecay" -> "decay.mul" [ color = "orange" ];
+  "TokenCapacitor.updateBalancesUntil" -> "IERC20.balanceOf" [ color = "orange" ];
+  "TokenCapacitor.updateBalancesUntil" -> "TokenCapacitor.projectedLockedBalance" [ color = "green" ];
+  "TokenCapacitor.updateBalancesUntil" -> "lastLockedBalance.sub" [ color = "orange" ];
+  "TokenCapacitor.updateBalancesUntil" -> "totalBalance.sub" [ color = "orange" ];
+  "TokenCapacitor.updateBalances" -> "TokenCapacitor.updateBalancesUntil" [ color = "green" ];
+  "TimeTravelingGatekeeper.timeTravel" -> "startTime.sub" [ color = "orange" ];
+  "TimeTravelingGatekeeper.timeTravel" -> "startTime.add" [ color = "orange" ];
+  "UpgradedGatekeeper.null" -> "ParameterStore.getAsAddress" [ color = "orange" ];
+  "UpgradedGatekeeper.null" -> "Gatekeeper.currentEpochNumber" [ color = "orange" ];
+  "UpgradedGatekeeper.null" -> "Gatekeeper.startTime" [ color = "orange" ];
+  "UpgradedGatekeeper.init" -> "ParameterStore.getAsAddress" [ color = "orange" ];
+  "UpgradedGatekeeper.init" -> "UpgradedGatekeeper.migrateState" [ color = "green" ];
+  "Gatekeeper.depositVoteTokens" -> "Gatekeeper.depositVoteTokens" [ color = "orange" ];
+  "Gatekeeper.stakeTokens" -> "Gatekeeper.stakeTokens" [ color = "orange" ];
+  "UpgradedGatekeeper.migrateState" -> "Gatekeeper.slateCount" [ color = "orange" ];
+  "UpgradedGatekeeper.migrateState" -> "Gatekeeper.requestCount" [ color = "orange" ];
+  "UpgradedGatekeeper.migrateState" -> "ParameterStore.getAsAddress" [ color = "orange" ];
+  "UpgradedGatekeeper.migrateState" -> "UpgradedGatekeeper.migrateContest" [ color = "green" ];
+  "UpgradedGatekeeper.migrateState" -> "UpgradedGatekeeper.migrateContest" [ color = "green" ];
+  "UpgradedGatekeeper.migrateContest" -> "UpgradedGatekeeper.fetchContest" [ color = "green" ];
+  "UpgradedGatekeeper.migrateContest" -> "UpgradedGatekeeper.fetchSlate" [ color = "green" ];
+  "UpgradedGatekeeper.migrateContest" -> "Gatekeeper.requests" [ color = "orange" ];
+  "UpgradedGatekeeper.migrateContest" -> "Gatekeeper.incumbent" [ color = "orange" ];
+  "UpgradedGatekeeper.fetchContest" -> "Gatekeeper.contestDetails" [ color = "orange" ];
+  "UpgradedGatekeeper.fetchContest" -> "Gatekeeper.contestDetails" [ color = "orange" ];
+  "UpgradedGatekeeper.fetchSlate" -> "Gatekeeper.slates" [ color = "orange" ];
+  "UpgradedGatekeeper.fetchSlate" -> "Gatekeeper.slateRequests" [ color = "orange" ];
+
+
+rankdir=LR
+node [shape=plaintext]
+subgraph cluster_01 { 
+label = "Legend";
+key [label=<<table border="0" cellpadding="2" cellspacing="0" cellborder="0">
+  <tr><td align="right" port="i1">Internal Call</td></tr>
+  <tr><td align="right" port="i2">External Call</td></tr>
+  <tr><td align="right" port="i3">Defined Contract</td></tr>
+  <tr><td align="right" port="i4">Undefined Contract</td></tr>
+  </table>>]
+key2 [label=<<table border="0" cellpadding="2" cellspacing="0" cellborder="0">
+  <tr><td port="i1">&nbsp;&nbsp;&nbsp;</td></tr>
+  <tr><td port="i2">&nbsp;&nbsp;&nbsp;</td></tr>
+  <tr><td port="i3" bgcolor="lightgray">&nbsp;&nbsp;&nbsp;</td></tr>
+  <tr><td port="i4">
+    <table border="1" cellborder="0" cellspacing="0" cellpadding="7" color="lightgray">
+      <tr>
+       <td></td>
+      </tr>
+     </table>
+  </td></tr>
+  </table>>]
+key:i1:e -> key2:i1:w [color=green]
+key:i2:e -> key2:i2:w [color=orange]
+}
+}
+

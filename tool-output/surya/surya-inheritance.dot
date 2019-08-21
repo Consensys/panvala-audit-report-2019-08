@@ -1,0 +1,17 @@
+digraph G {
+  graph [ ratio = "auto", page = "40" ];
+  "BasicToken";
+  "ERC20";
+  "ERC20Detailed";
+  "Gatekeeper";
+  "Migrations";
+  "ParameterStore";
+  "TokenCapacitor";
+  "TimeTravelingGatekeeper";
+  "UpgradedGatekeeper";
+  "BasicToken" -> "ERC20";
+  "BasicToken" -> "ERC20Detailed";
+  "TimeTravelingGatekeeper" -> "Gatekeeper";
+  "UpgradedGatekeeper" -> "Gatekeeper";
+}
+

@@ -1,0 +1,332 @@
+$ yarn run test
+yarn run v1.17.3
+$ yarn lint ./ && truffle test
+$ eslint ./
+
+/Users/primary/Projects/panvala/governance-contracts/test/utils.js
+  470:5  warning  Unexpected console statement  no-console
+
+✖ 1 problem (0 errors, 1 warning)
+
+
+Compiling your contracts...
+===========================
+> Compiling ./contracts/Gatekeeper.sol
+> Compiling ./contracts/Migrations.sol
+> Compiling ./contracts/ParameterStore.sol
+> Compiling ./contracts/TokenCapacitor.sol
+> Compiling ./contracts/dev/TimeTravelingGatekeeper.sol
+> Compiling ./contracts/test/BasicToken.sol
+> Compiling ./contracts/test/UpgradedGatekeeper.sol
+> Compiling openzeppelin-solidity/contracts/math/SafeMath.sol
+> Compiling openzeppelin-solidity/contracts/token/ERC20/ERC20.sol
+> Compiling openzeppelin-solidity/contracts/token/ERC20/ERC20Detailed.sol
+> Compiling openzeppelin-solidity/contracts/token/ERC20/IERC20.sol
+
+    > compilation warnings encountered:
+
+/Users/primary/Projects/panvala/governance-contracts/contracts/ParameterStore.sol:2:1: Warning: Experimental features are turned on. Do not use experimental features on live deployments.
+pragma experimental ABIEncoderV2;
+^-------------------------------^
+,/Users/primary/Projects/panvala/governance-contracts/contracts/TokenCapacitor.sol:2:1: Warning: Experimental features are turned on. Do not use experimental features on live deployments.
+pragma experimental ABIEncoderV2;
+^-------------------------------^
+,/Users/primary/Projects/panvala/governance-contracts/contracts/Gatekeeper.sol:2:1: Warning: Experimental features are turned on. Do not use experimental features on live deployments.
+pragma experimental ABIEncoderV2;
+^-------------------------------^
+,/Users/primary/Projects/panvala/governance-contracts/contracts/dev/TimeTravelingGatekeeper.sol:2:1: Warning: Experimental features are turned on. Do not use experimental features on live deployments.
+pragma experimental ABIEncoderV2;
+^-------------------------------^
+,/Users/primary/Projects/panvala/governance-contracts/contracts/test/UpgradedGatekeeper.sol:2:1: Warning: Experimental features are turned on. Do not use experimental features on live deployments.
+pragma experimental ABIEncoderV2;
+^-------------------------------^
+
+> Artifacts written to /var/folders/vk/01zl87497jx6bq66fhhhd9zm0000gn/T/test-119615-30467-1q80j9a.at4dl
+> Compiled successfully using:
+   - solc: 0.5.1+commit.c8a2cb62.Emscripten.clang
+
+Deploying Gatekeeper with ParameterStore 0x4820AaF7B9bdbD01934Fc76eeb43C080cfC2ea07 and token 0xA944Ab7d51C0201f5BAeb95704123F38C536E918
+Deploying TokenCapacitor with ParameterStore 0x4820AaF7B9bdbD01934Fc76eeb43C080cfC2ea07
+Charging capacitor with 50000000 tokens
+
+
+  Contract: integration
+    withdraw over time
+      ✓ should calculate withdrawals correctly each epoch with quarterly balance updates (15822ms)
+      ✓ should calculate withdrawals correctly each epoch with daily balance updates (68222ms)
+    full epoch cycles
+      ✓ should run an epoch with multiple contests (563ms)
+      ✓ should do a "clean break" upgrade of the gatekeeper (1235ms)
+      migrate existing state
+        ✓ should not allow initialization before the new gatekeeper has been accepted (136ms)
+        with upgrade accepted
+          ✓ should do an upgrade of the gatekeeper while migrating existing state (1137ms)
+          ✓ should not allow users to deposit vote tokens before the new gatekeeper has been initialized (46ms)
+          ✓ should not allow users to stake tokens before the new gatekeeper has been initialized (243ms)
+    finalization stress testing
+      ✓ finalizes with a large number of slates (54319ms)
+
+  Contract: Gatekeeper
+    constructor
+      ✓ should correctly initialize the gatekeeper (121ms)
+      ✓ should fail if the parameter store address is zero (53ms)
+      ✓ should fail if the token address is zero (54ms)
+    newGatekeeper helper
+      ✓ should create a gatekeeper (177ms)
+    timing
+      initial epoch
+        ✓ should correctly calculate the initial epoch number
+        ✓ should calculate the start of the initial epoch as the system start time
+        ✓ should initialize the slate submission deadline
+      future epoch
+        ✓ should correctly calculate the epoch start time (44ms)
+        ✓ should correctly calculate a subsequent epoch number
+        ✓ should initialize the slate submission deadline (42ms)
+    recommendSlate
+      ✓ should create a new slate with the provided data (149ms)
+      ✓ should allow creation of an empty slate (60ms)
+      ✓ should revert if the metadataHash is empty (45ms)
+      ✓ should revert if any of the requestIDs is invalid (79ms)
+      ✓ should revert if there are duplicate requestIDs (87ms)
+      ✓ should revert if any of the requests have resources that do not match the one provided (206ms)
+      timing
+        ✓ should revert if the slate submission period is not active (77ms)
+    stakeTokens
+      ✓ should allow a user to stake tokens on a slate (152ms)
+      ✓ should revert if the slate does not exist
+      ✓ should revert if the user does not have enough tokens (83ms)
+      ✓ should revert if the token transfer fails (100ms)
+      ✓ should revert if the slate has already been staked on (118ms)
+      ✓ should revert if the slate submission period is not active (77ms)
+      ✓ should correctly extend the deadline in future epochs (240ms)
+    requestPermission
+      ✓ should create a new Request (91ms)
+      ✓ should not allow an empty metadataHash
+    depositVoteTokens
+      ✓ should increase the user's voting balance (134ms)
+      ✓ should fail if the voter does not have enough tokens (85ms)
+      ✓ should fail if the token transfer to the contract fails (103ms)
+    withdrawVoteTokens
+      ✓ should decrease the user's voting balance (76ms)
+      ✓ should fail if the amount is greater than the user's vote token balance (39ms)
+      - should fail if the token transfer fails
+      timing
+        ✓ should revert if the commit period is active (and the user has committed?)
+        ✓ should allow withdrawal after the commit period (42ms)
+    delegateVotingRights
+      ✓ should allow a voter to set a delegate account (41ms)
+      ✓ should revert if the delegate is the same as the sender
+      ✓ should allow the voter to unset the delegate (56ms)
+    commitBallot
+      ✓ should successfully commit a ballot (90ms)
+      ✓ should automatically deposit more vote tokens if the balance is low (88ms)
+      ✓ should fail if the commit period has not started (67ms)
+      ✓ should fail if the commit period has ended (78ms)
+      ✓ should fail if the voter has already committed for this ballot (77ms)
+      ✓ should fail if commit hash is zero (42ms)
+      delegated
+        ✓ should let a delegate commit a ballot for the voter (89ms)
+        ✓ should revert if the delegate has tokens but the voter does not (138ms)
+        ✓ should revert if the committer is not a delegate for the voter (76ms)
+    didCommit
+      ✓ should return true if the voter has committed for the ballot (64ms)
+      ✓ should return false if the voter has not committed for the ballot
+      ✓ should return true if a delegate voted on the voter's behalf (90ms)
+    getCommitHash
+      ✓ should return the commit hash if the voter has committed for the ballot (62ms)
+      ✓ should revert if the voter has not committed for the ballot
+    revealBallot
+      ✓ should successfully reveal a ballot (167ms)
+      ✓ should revert if the submitted data does not match the committed ballot (49ms)
+      ✓ should fail if the supplied voter address is zero (45ms)
+      ✓ should fail if the number of resources does not match (43ms)
+      ✓ should fail if the number of firstChoices does not match (47ms)
+      ✓ should fail if the number of secondChoices does not match (44ms)
+      - should fail if any of the choices do not correspond to valid slates
+      ✓ should fail if the voter has not committed for the ballot (42ms)
+      ✓ should fail if the voter has already revealed for the ballot (88ms)
+      ✓ should fail if the reveal period has not started (39ms)
+      ✓ should fail if the reveal period has ended (41ms)
+    revealManyBallots
+      ✓ should correctly reveal multiple ballots (329ms)
+    didReveal
+      ✓ should return true if the voter has revealed for the ballot (51ms)
+      ✓ should return false if the voter has not revealed
+      ✓ should return false if the voter has not committed
+    finalizeContest
+      ✓ should correctly tally the votes and finalize a contest (438ms)
+      ✓ should revert if the resource has no staked slates (125ms)
+      ✓ should declare a slate as the winner if it is the only staked slate for the resource (253ms)
+      ✓ should ignore votes for unstaked slates (607ms)
+      ✓ should finalize and not go to a runoff if a slate has 1 more than half of the votes (558ms)
+      ✓ should reject all staked slates if no one votes (204ms)
+      ✓ should wait for a runoff if no slate has more than 50% of the votes (467ms)
+      ✓ should wait for a runoff if the lead slate has exactly 50% of the votes (313ms)
+      ✓ should revert if called more than once (326ms)
+      ✓ should revert if the contest has multiple slates and the reveal period is still active (40ms)
+      ✓ should allow finalization during the reveal period if the contest has an unopposed slate (242ms)
+    getFirstChoiceVotes
+      ✓ should correctly get the number of first choice votes for a slate (293ms)
+    contestStatus
+      ✓ should return Empty if the resource has no staked slates (101ms)
+      ✓ should return NoContest if the resource has only a single staked slate (228ms)
+      ✓ should return Active if the resource has two or more staked slates (275ms)
+    contestDetails
+      ✓ should return uninitialized values if there are no slates
+      ✓ should return contest details for an initialized contest (282ms)
+      after vote
+        ✓ should return contest details for a contest after a vote (343ms)
+        ✓ should return contest details for a contest after a runoff (542ms)
+    finalizeRunoff
+      ✓ should correctly tally and finalize a runoff vote (452ms)
+      ✓ should count correctly if the original leader wins the runoff (379ms)
+      ✓ should assign the slate with the lowest ID if the runoff ends in a tie (394ms)
+      ✓ should revert if a runoff is not pending (352ms)
+    getWinningSlate
+      ✓ should correctly get the winning slate after a finalized vote (350ms)
+      ✓ should correctly get the winning slate after a finalized runoff (384ms)
+      ✓ should revert if the contest has not been finalized
+    hasPermission
+      ✓ should return false for a request before votes are counted
+      simple vote
+        ✓ should return true for a request that was included in an accepted slate
+        ✓ should return false for a request that was included in a rejected slate
+        ✓ should return false for an approved request that has expired (54ms)
+      runoff
+        ✓ should return true for a request that was included in an accepted slate
+        ✓ should return false for a request that was included in a rejected slate
+        ✓ should return false for an approved request that has expired (53ms)
+    withdrawStake
+      initial vote
+        ✓ should withdraw tokens after a finalized vote (127ms)
+        ✓ should revert if the slate has not been accepted (88ms)
+        ✓ should revert if the msg.sender is not the original staker (115ms)
+        ✓ should revert if the stake has already been withdrawn (149ms)
+        ✓ should revert if the slate is invalid
+      runoff vote
+        ✓ should withdraw tokens after a finalized runoff vote (100ms)
+        ✓ should revert if the slate has not been accepted (53ms)
+    donateChallengerStakes
+      vote
+        ✓ should send tokens to the capacitor after a finalized vote (557ms)
+        ✓ should revert if the contest is not finalized (323ms)
+      runoff vote
+        ✓ should send tokens to the capacitor after a finalized runoff (588ms)
+        ✓ should revert if the contest is not finalized (314ms)
+    incumbent
+      ✓ should return the zero address if no contests have been finalized for the resource
+      ✓ should return a new incumbent if someone else wins (681ms)
+      ✓ should maintain the incumbent even if no action takes place in an epoch (433ms)
+
+  Contract: ParameterStore
+    constructor
+      ✓ should correctly initialize the parameter store (75ms)
+      ✓ should be okay with no initial values (38ms)
+    init
+      ✓ should allow the creator to initialize
+      ✓ should not allow multiple initializations (52ms)
+      ✓ should not allow anyone other than the creator to initialize
+    setInitialValue
+      ✓ should allow the creator to set initial values (39ms)
+      ✓ should not allow someone other than the creator to set initial values
+      ✓ should not allow the creator to set values after initialization (51ms)
+    get
+      asAddress
+        ✓ should retrieve an address value (48ms)
+    createProposal
+      ✓ it should create a proposal to change a parameter (68ms)
+      ✓ should not allow creation of a proposal with an empty metadataHash
+      createManyProposals
+        ✓ should create proposals and emit an event for each (90ms)
+    setValue
+      ✓ should set the value if the request has been approved (56ms)
+      ✓ should not allow multiple executions for the same proposal ID (70ms)
+      ✓ should revert if the proposal has not been approved by the gatekeeper (53ms)
+      ✓ should revert if the proposal ID is invalid
+
+  Contract: TokenCapacitor
+    constructor
+      ✓ should correctly initialize the capacitor (72ms)
+      ✓ should fail if the parameter store address is zero
+      ✓ should fail if the token address is zero
+      ✓ should fail if the Gatekeeper address is zero (73ms)
+    createProposal
+      ✓ should create a proposal to the appropriate beneficiary (64ms)
+      ✓ should allow a proposal to send to the zero address (47ms)
+      ✓ should not allow creation of a proposal with an empty metadataHash
+    createManyProposals
+      ✓ should create proposals and emit an event for each (67ms)
+    withdrawTokens
+      ✓ should send tokens to the appropriate address if the request has been approved (153ms)
+      ✓ should allow someone other than the grantee to send the tokens (77ms)
+      ✓ should not allow multiple withdrawals for the same proposal ID (101ms)
+      ✓ should revert if the proposal has not been approved by the gatekeeper (50ms)
+      ✓ should revert if the proposal ID is invalid
+      ✓ should revert if the number of tokens requested is greater than the number of unlocked tokens (61ms)
+    donate
+      ✓ should let a payer donate tokens (103ms)
+      ✓ should let a payer donate tokens on behalf of a donor (73ms)
+      ✓ should let a payer donate tokens on behalf of a unspecified donor (zero address)
+      ✓ should allow a donation with an empty metadataHash (38ms)
+      ✓ should revert if the number of tokens is zero
+      ✓ should revert if the token transfer fails (67ms)
+    balances
+      calculateDecay
+        ✓ 1 days
+        ✓ 2 days
+        ✓ 3 days
+        ✓ 4 days
+        ✓ 7 days
+        ✓ 8 days
+        ✓ 15 days
+        ✓ 16 days
+        ✓ 31 days
+        ✓ 32 days
+        ✓ 63 days
+        ✓ 64 days
+        ✓ 127 days
+        ✓ 128 days
+        ✓ 255 days
+        ✓ 256 days
+        ✓ 511 days
+        ✓ 512 days
+        ✓ 1023 days (114ms)
+        ✓ 1024 days
+        ✓ 2047 days
+        ✓ 2048 days
+        ✓ 4095 days
+        ✓ should revert if the interval is too large
+      updateBalances
+        ✓ should decrease the locked balance and increase the unlocked balance properly for time zero (96ms)
+        ✓ should decrease the locked balance and increase the unlocked balance properly for a day (109ms)
+        ✓ should decrease the locked balance and increase the unlocked balance properly for a week (93ms)
+        ✓ should decrease the locked balance and increase the unlocked balance properly for a half life (98ms)
+        ✓ should increase the locked balance if the balance increases outside `donate()` (96ms)
+        ✓ should revert if more than 4096 days have passed since the last update
+        ✓ should allow calls to updateBalancesUntil() to catch up after more than 4096 days (87ms)
+      projectedLockedBalance
+        ✓ should project correctly for time zero
+        ✓ should project correctly for a day
+        ✓ should project correctly for a week
+        ✓ should project correctly for a half life
+        ✓ should revert if time is before lastLockedTime
+        ✓ should project from after the donation (142ms)
+      projectedUnlockedBalance
+        ✓ should project correctly for time zero
+        ✓ should project correctly for a day
+        ✓ should project correctly for a week
+        ✓ should project correctly for a half life
+        ✓ should revert if time is before lastLockedTime
+
+  Contract: TimeTravelGatekeeper
+    timeTravel
+      ✓ should go forward in time (72ms)
+      ✓ should go backward in time (74ms)
+      ✓ should revert if someone other than the owner tries to time travel
+      ✓ should go back before a deadline (137ms)
+
+
+  202 passing (5m)
+  2 pending
+
+✨  Done in 344.71s.
